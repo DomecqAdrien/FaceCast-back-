@@ -1,0 +1,19 @@
+extends layout
+
+block content
+	h1 Bienvenue
+	if title == 'Inconnu'
+		p(id="nameHint") Entrez votre prénom
+		div(id='nameBorder', class="card-panel ")
+			input(id='name', type='text' name="Entrez votre nom")
+		input(
+			class='btn waves-effect waves-light'
+			type='submit'
+			value='Soumettre'
+			onClick='sendName()'
+		)
+		br
+	else
+		p Welcome to #{title}
+
+

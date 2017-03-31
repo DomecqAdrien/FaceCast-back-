@@ -1,0 +1,26 @@
+doctype html
+html
+	head
+		meta(charset="utf-8", content="fr")
+		title= title
+		link(rel='stylesheet', href='/stylesheets/style.css')
+		//-link(rel='stylesheet', href='/stylesheets/bootstrap.css')
+		link(rel='stylesheet', href='/stylesheets/materialize.css')
+		link(href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet")
+		link(rel='stylesheet', href='/stylesheets/custom.css')
+		
+	
+	body
+		include navbar
+		a.button-collapse(href='#', data-activates='slide-out') Menu
+				i.material-icons menu
+		block content
+	
+	
+	//-script(type='text/javascript', src='/javascripts/bootstrap.js')
+	script(type='text/javascript', src='/javascripts/jquery.js')
+	script(type='text/javascript', src='/javascripts/materialize.js')
+	script(type='text/javascript', src='/javascripts/fonctions.js')
+	script.
+		$(".button-collapse").sideNav();
+	block javascript

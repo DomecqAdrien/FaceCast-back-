@@ -1,0 +1,27 @@
+extends ../layout
+
+block content
+	br
+	br
+	table(class='highlight')
+		thead
+			th(data-field='nom') Nom
+			th(data-field='prenom') Prénom
+			th(data-field='email')
+			th(data-field='actions' style='text-align:center') Actions
+		tbody
+			each user, i in userlist
+				tr
+					td= user.nom
+					td= user.prenom
+					td= user.email
+					td(style='text-align:center')
+						button(
+							class='waves-effect waves-light btn', 
+							onClick=`post('/users/del', {id : '${user._id}'})`
+						) Supprimer
+								i(class='material-icons left') delete
+						br
+						br
+						a(class='waves-effect waves-light btn' href='/users/del/' + user.username) Éditer
+							i(class='material-icons left') mode_edit

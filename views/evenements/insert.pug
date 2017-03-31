@@ -1,0 +1,34 @@
+extends ../layout
+
+block content
+    header
+        h2= 'Formulaire'
+    form(name="addEvenement", method="post", action="/evenements/add", class="card-panel")
+        input(type="text", placeholder="nom", name="nom")
+        p Date de début
+        input(type="date", class="datepicker", name="date_debut")
+        p Date de fin
+        input(type="date", class="datepicker", name="date_fin")
+        br
+        select(name="type" class="input-field")
+            option(value= "" disabled selected) Type d'événement
+            option(value="Spectacle") Spectacle
+            option(value="Film") Film
+
+        input(type="text", placeholder="nombre de jours", name="nb_jours")
+        br
+        button(
+            type="submit"
+            class="btn waves-effect waves-light"
+        ) submit 
+            i(class="material-icons right") send
+        
+block javascript
+        script.
+            $(document).ready(function() {
+                $('select').material_select();
+            });
+             $('.datepicker').pickadate({
+                selectMonths: true, // Creates a dropdown to control month
+                selectYears: 15 // Creates a dropdown of 15 years to control year
+            });
