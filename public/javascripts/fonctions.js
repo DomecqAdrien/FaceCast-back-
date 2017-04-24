@@ -46,3 +46,16 @@ function post(path, params, method) {
     document.body.appendChild(form);
     form.submit();
 }
+
+var nbRoles = 1;
+
+function addRole(){
+    nbRoles++;
+    $('#roles').append('<hr><input type="text" placeholder="rôle '+ nbRoles + '", '
+        + ' name="roles"/><input type="number" placeholder="nombre de personnes pour ce rôle", name="nbPersonnesRole"/>')
+    console.log(nbRoles); 
+}
+
+function showRoles(index){
+    console.log(index);
+}

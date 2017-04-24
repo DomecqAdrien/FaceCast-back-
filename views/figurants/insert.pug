@@ -1,0 +1,16 @@
+extends ../layout
+
+block content
+	header
+		h2= 'Formulaire'
+	form#formAddUser(name="adduser",method="post",action="/figurants/add", class="card-panel")
+		p prénom
+		input(type="text", placeholder="prénom", name="prenom")
+		p nom
+		input#inputName(type="text", placeholder="nom", name="nom")
+		p email
+		input#inputName(type="text", placeholder="email", name="email")
+		p mot de passe
+		input#inputUserPassword(type="password", placeholder="mot de passe", name="password")
+
+		button#btnSubmit(type="submit") submit

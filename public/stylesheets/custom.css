@@ -10,3 +10,14 @@
 .brand-logo{
 	margin-left: 1%;
 }
+
+.btn-link{
+  border:none;
+  outline:none;
+  background:none;
+  cursor:pointer;
+  color:#286090;
+  padding:0;
+  font-family:inherit;
+  font-size:inherit;
+}

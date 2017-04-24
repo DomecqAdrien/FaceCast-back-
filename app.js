@@ -14,7 +14,7 @@ dba.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
 
 var index = require('./routes/index');
-var users = require('./routes/users');
+var figurants = require('./routes/figurants');
 var evenements = require('./routes/evenements');
 var android = require('./routes/android');
 
@@ -34,7 +34,7 @@ app.use(require('stylus').middleware(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
-app.use('/users', users);
+app.use('/figurants', figurants);
 app.use('/evenements', evenements);
 app.use('/android', android);
 

@@ -5,6 +5,7 @@ var Schema = mongoose.Schema;
 var candidatureSchema = new mongoose.Schema({
 	evenement : { type: Schema.Types.ObjectId, ref: 'evenements' },
 	figurant : { type: Schema.Types.ObjectId, ref: 'figurants' },
+    role : { type: Number },
 	etat : { type : String, default : "En attente" }
 });
 

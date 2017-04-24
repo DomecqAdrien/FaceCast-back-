@@ -1,13 +1,13 @@
 var express = require('express');
 var router = express.Router();
-var evenement = require('../models/evenement');
-var user = require('../models/figurant');
-var candidature = require('../models/candidature');
+var Evenement = require('../models/evenement');
+var User = require('../models/figurant');
+var Candidature = require('../models/candidature');
 
 router.get('/evenements/:id?', function(req, res, next){
     var response = {};
 
-    evenement.find({}, function(err, data){
+    Evenement.find({}, function(err, data){
         if(err) {
             response = {"error" : true,"message" : "Error fetching data"};
         } else {
@@ -22,7 +22,7 @@ router.get('/candidatures/:id?', function(req, res, next){
 
 
 
-    candidature
+    Candidature
     .find({ 'figurant' : req.params.id })
     .populate('figurant')
     .populate('evenement')
@@ -39,7 +39,7 @@ router.get('/candidatures/:id?', function(req, res, next){
 router.post('/candidatures', function(req, res, next){
     var response = {};
 
-    candidature
+    Candidature
     .find({ 'figurant' : req.body.id })
     .populate('figurant')
     .populate('evenement')
@@ -58,7 +58,7 @@ router.post('/login', function(req, res){
     var email = req.body.email;
     var password = req.body.password;
     
-    user.findOne({password: password, email: email}, function(e, docs){
+    User.findOne({password: password, email: email}, function(e, docs){
         res.send(docs);
     });
 
@@ -70,22 +70,21 @@ router.get('/login/:email/:password', function(req, res){
     var email = req.params.email;
     var password = req.params.password;
 
-    user.findOne({password: password, email: email}, function(e, docs){
+    User.findOne({password: password, email: email}, function(e, docs){
         res.send(docs);
     });
 });
 
-router.get('/candidatures/:idEvenement/:idFigurant', function(req, res){
+router.get('/candidatures/:idEvenement/:idFigurant/:idRole', function(req, res){
 
     var idFigurant = req.params.idFigurant;
     var idEvenement = req.params.idEvenement;
-    console.log(idFigurant);
-    console.log(idFigurant);
+    var idRole = req.params.idRole;
 
-
-    var newCandidature = new candidature({
+    var newCandidature = new Candidature({
         "evenement" : idEvenement,
-        "figurant": idFigurant
+        "figurant": idFigurant,
+        "role": idRole
     });
 
     newCandidature.save( function (err, doc) {
@@ -100,5 +99,22 @@ router.get('/candidatures/:idEvenement/:idFigurant', function(req, res){
     });
     
 })
+
+router.put('/candidatures/edit/:idCandidature/:etat', function(req, res){
+
+    var idCandidature = req.params.idCandidature;
+    var etat = req.params.etat;
+
+    Candidature.findById(idCandidature, function(err, candidature){
+        if(err) return handleError(err);
+
+        candidature.etat = etat;
+
+        candidature.save(function(err, updatedCandidature){
+            if(err) return handleError(err);
+            res.send("success");
+        });
+    });
+});
 
 module.exports = router;

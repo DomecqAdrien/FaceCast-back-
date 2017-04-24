@@ -14,7 +14,17 @@ block content
             option(value= "" disabled selected) Type d'événement
             option(value="Spectacle") Spectacle
             option(value="Film") Film
-
+        br
+        p Rôles
+        div(id="roles")
+            div(id="role1")
+                input(type="text", placeholder="rôle 1", name="roles")
+                input(type="number", placeholder="nombre de personnes pour ce rôle", name="nbPersonnesRole")    
+        h4(
+            class="btn-link"
+            onclick="addRole()"
+        ) Ajouter un rôle 
+            i(class="material-icons left") add                   
         input(type="text", placeholder="nombre de jours", name="nb_jours")
         br
         button(
