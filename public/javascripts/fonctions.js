@@ -56,6 +56,8 @@ function addRole(){
     console.log(nbRoles); 
 }
 
-function showRoles(index){
-    console.log(index);
+function showRoles(index, nbRoles){
+    for(i = 0; i < nbRoles; i++){
+        $('#roles' + index + "Nb" + i).toggle('fast');
+    } 
 }

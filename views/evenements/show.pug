@@ -1,7 +1,6 @@
 extends ../layout
 
 block content
-    =evenements
     div.container
         h2.center Liste des évenements
         table.bordered
@@ -15,20 +14,19 @@ block content
 
           tbody
             each evenement, index in evenements
-                =evenement.roles.length
                 tr(id=index)
                     td
                         a(class="btn-floating waves-effect waves-light blue")
-                            i(class="material-icons left", onClick="showRoles(" + index + ")") keyboard_arrow_right
+                            i(class="material-icons left", onClick="showRoles(" + index + "," + evenement.roles.length +")") keyboard_arrow_right
                     td=evenement.nom
                     td=evenement.type
                     td=evenement.date_debut
                     td=evenement.date_fin
-                tr(
-                    id="roles" + index
-                    style="visibility:hidden;display: inline-block;overflow: hidden;white-space: nowrap;width: 150px;"
-                )
-                    each role in evenement.roles
-                        tr
-                            td(colspan="3")="Nom : " + role.role
-                            td(colspan="3")="Nombre de places :" + role.nbPersonnesRole
+                each role, i in evenement.roles
+                  tr(
+                    hidden
+                    id="roles" + index + "Nb" + i
+                  )  
+                    td(colspan="3")="Nom : " + role.role
+                    td(colspan="3")="Nombre de places :" + role.nbPersonnesRole
+                  
