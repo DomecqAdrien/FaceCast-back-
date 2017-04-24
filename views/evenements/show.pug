@@ -17,7 +17,7 @@ block content
                 tr(id=index)
                     td
                         a(class="btn-floating waves-effect waves-light blue")
-                            i(class="material-icons left", onClick="showRoles(" + index + "," + evenement.roles.length +")") keyboard_arrow_right
+                            i(class="material-icons left", id="buttonRole" + index, onClick="showRoles(" + index + "," + evenement.roles.length +")") keyboard_arrow_down
                     td=evenement.nom
                     td=evenement.type
                     td=evenement.date_debut

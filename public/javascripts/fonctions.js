@@ -57,6 +57,18 @@ function addRole(){
 }
 
 function showRoles(index, nbRoles){
+
+    var buttonRole = $('#buttonRole' + index);
+    
+    switch(buttonRole.text()){
+        case "keyboard_arrow_down":
+            buttonRole.html("keyboard_arrow_right");
+            break;
+        case "keyboard_arrow_right":
+            buttonRole.html("keyboard_arrow_down");
+            break;
+    }
+    
     for(i = 0; i < nbRoles; i++){
         $('#roles' + index + "Nb" + i).toggle('fast');
     } 
